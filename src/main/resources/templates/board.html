@@ -1,0 +1,101 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Spring Boot Heroku Example</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css"/>
+
+    <!-- Optional theme -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap-theme.min.css"/>
+
+    <style>
+table, th, td {
+  border: 1px solid black;
+}
+
+th, td {
+  padding: 10px;
+}
+
+    </style>
+</head>
+<body>
+
+<div style="padding-left: 20px; padding-top:20px">
+    <form action="/glosuj" method="POST">
+        Hej <span id="div" th:utext="${name}"></span>
+        <input type="text" hidden="true" name="name" th:value="${name}"></input>
+        <br></br>
+        <table>
+            <tr>
+                <td>a)</td>
+                <td><button type="submit" value="a) 100%" name="button">100% sure</button></td>
+                <td><button type="submit" value="a) 50:50" name="button">Wydaje mi sie ze to</button></td>
+                <td><button type="submit" value="a) Strzelam" name="button">Strzelam to</button></td>
+                <td><button type="submit" value="a) Nie wiem" name="button">Nie wiem</button></td>
+            </tr>
+            <tr>
+                <td>b)</td>
+                <td><button type="submit" value="b) 100%" name="button">100% sure</button></td>
+                <td><button type="submit" value="b) 50:50" name="button">Wydaje mi sie ze to</button></td>
+                <td><button type="submit" value="b) Strzelam" name="button">Strzelam to</button></td>
+                <td><button type="submit" value="b) Nie wiem" name="button">Nie wiem</button></td>
+            </tr>
+            <tr>
+                <td>c)</td>
+                <td><button type="submit" value="c) 100%" name="button">100% sure</button></td>
+                <td><button type="submit" value="c) 50:50" name="button">Wydaje mi sie ze to</button></td>
+                <td><button type="submit" value="c) Strzelam" name="button">Strzelam to</button></td>
+                <td><button type="submit" value="c) Nie wiem" name="button">Nie wiem</button></td>
+            </tr>
+            <tr>
+                <td> d)</td>
+                <td><button type="submit" value="d) 100%" name="button">100% sure</button></td>
+                <td><button type="submit" value="d) 50:50" name="button">Wydaje mi sie ze to</button></td>
+                <td><button type="submit" value="d) Strzelam" name="button">Strzelam to</button></td>
+                <td><button type="submit" value="d) Nie wiem" name="button">Nie wiem</button></td>
+            </tr>
+            <tr>
+                <td>e)</td>
+                <td><button type="submit" value="e) 100%" name="button">100% sure</button></td>
+                <td><button type="submit" value="e) 50:50" name="button">Wydaje mi sie ze to</button></td>
+                <td><button type="submit" value="e) Strzelam" name="button">Strzelam to</button></td>
+                <td><button type="submit" value="e) Nie wiem" name="button">Nie wiem</button></td>
+            </tr>
+            <tr>
+                <td>f)</td>
+                <td><button type="submit" value="f) 100%" name="button">100% sure</button></td>
+                <td><button type="submit" value="f) 50:50" name="button">Wydaje mi sie ze to</button></td>
+                <td><button type="submit" value="f) Strzelam" name="button">Strzelam to</button></td>
+                <td><button type="submit" value="f) Nie wiem" name="button">Nie wiem</button></td>
+            </tr>
+            <tr>
+                <td>g)</td>
+                <td><button type="submit" value="g) 100%" name="button">100% sure</button></td>
+                <td><button type="submit" value="g) 50:50" name="button">Wydaje mi sie ze to</button></td>
+                <td><button type="submit" value="g) Strzelam" name="button">Strzelam to</button></td>
+                <td><button type="submit" value="g) Nie wiem" name="button">Nie wiem</button></td>
+            </tr>
+        </table>
+        <br></br>
+        <input name="button" type="text"></input>
+        <button type="submit">Wyślij inną odpowiedź</button>
+
+        <br></br><br></br><br></br>
+        <button type="submit" value="refresh" name="button">Odswiez</button>
+        <button type="submit" value="clear" name="button">ADMIN: wyczysc</button>
+    </form>
+    <hr></hr>
+    Odpowiedzi:
+    <div>
+        <table>
+            <tr th:each="option : ${options}">
+                <td><span th:text="${option.getOwner()}"></span></td>
+                <td><span th:text="${option.getValue()}"></span></td>
+            </tr>
+        </table>
+    </div>
+</div>
+</body>
+</html>
