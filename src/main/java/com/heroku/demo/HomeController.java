@@ -13,8 +13,13 @@ import java.util.List;
 @RequestMapping("/")
 public class HomeController {
 
+
+    private OptionRepository repository;
+
     @Autowired
-    OptionRepository repository;
+    public HomeController(OptionRepository repository) {
+        this.repository = repository;
+    }
 
     @RequestMapping(method = RequestMethod.GET)
     public String home(ModelMap model) {
