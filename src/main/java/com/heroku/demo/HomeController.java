@@ -33,12 +33,16 @@ public class HomeController {
     }
 
     @RequestMapping(value = "/glosuj", method = RequestMethod.POST)
-    public String glosuj(Model model, @RequestParam("name") String name, @RequestParam("button") String button) {
+    public String glosuj(ModelMap model, @RequestParam("name") String name, @RequestParam("button") String button) {
 
         if (!button.contains("refresh")) {
-            Option option;
-            if (repository.findByOwner(name).isPresent()) {
-                option = repository.findByOwner(name).get();
+            Option option = null;
+            List<Option> options = repository.findAll();
+            for (Option option1 : options) {
+                if (option1.getOwner().equals(name))
+                    option = option1;
+            }
+            if (option != null) {
                 option.setValue(button);
             } else {
                 option = new Option();
@@ -47,7 +51,7 @@ public class HomeController {
             }
             repository.save(option);
         }
-        if(button.contains("clear")){
+        if (button.contains("clear")) {
             repository.deleteAll();
         }
 
