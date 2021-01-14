@@ -1,6 +1,7 @@
 package com.heroku.demo;
 
 import javax.persistence.*;
+import org.hibernate.validator.constraints.NotEmpty;
 
 @Entity
 @Table(name = "OPTION")
@@ -8,15 +9,18 @@ public class Option {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private long id;
+    @NotEmpty
+    private int id;
+    @NotEmpty
     private String owner;
+    @NotEmpty
     private String value;
 
-    public long getId() {
+    public int getId() {
         return id;
     }
 
-    public void setId(long id) {
+    public void setId(int id) {
         this.id = id;
     }
 
