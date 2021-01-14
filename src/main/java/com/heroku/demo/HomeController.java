@@ -34,7 +34,7 @@ public class HomeController {
     }
 
     @RequestMapping(value = "/glosuj", method = RequestMethod.POST)
-    public String glosuj(ModelMap model, @RequestParam("name") String name, @RequestParam("button") String button, BindingResult result) {
+    public String glosuj(ModelMap model,BindingResult result, @ModelAttribute("name") String name, @ModelAttribute("button") String button) {
 
         if (!button.contains("refresh")) {
             Option option = null;
