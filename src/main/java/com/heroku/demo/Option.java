@@ -3,6 +3,7 @@ package com.heroku.demo;
 import javax.persistence.*;
 
 @Entity
+@Table(name = "OPTION")
 public class Option {
 
     @Id
