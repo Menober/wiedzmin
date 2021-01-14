@@ -10,17 +10,17 @@ public class Option {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @NotEmpty
-    private int id;
+    private Long id;
     @NotEmpty
     private String owner;
     @NotEmpty
     private String value;
 
-    public int getId() {
+    public Long getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(Long id) {
         this.id = id;
     }
 
